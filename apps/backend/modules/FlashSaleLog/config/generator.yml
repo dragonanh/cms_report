@@ -1,0 +1,35 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           FlashSaleLog
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          flash_sale_log
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Quản lý giao dịch chương trình Flash sale
+        display: [order_no,msisdn,pack_code,app_code,serial,register_status,processed,created_at]
+        fields:
+          msisdn: {label: Số thuê bao}
+          pack_code: {label: Mã gói cước}
+          app_code: {label: Kênh đăng ký gói cước}
+          serial: {label: Serial thẻ cào}
+          register_status: {label: Trạng thái đăng ký gói cước}
+          processed: {label: Trạng thái quét tặng thẻ}
+          created_at: {label: Ngày đăng ký gói}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: FlashSaleLogAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~

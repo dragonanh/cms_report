@@ -1,0 +1,33 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtVpgTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_vpg_transaction_vtTopupRevenueReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Topup Revenue Report
+        display: [order_no,isdn_login,calling,isdn,order_time,created_at,ctt_id,tran_id,amount,status_name]
+        fields:
+          tran_id: {label: Transaction Id}
+          ctt_id: {label: Ctt Id}
+          created_at: {label: Payment Time}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: VtTopupRevenueReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

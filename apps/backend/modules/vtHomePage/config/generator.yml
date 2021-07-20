@@ -1,0 +1,23 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           sfGuardUser
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          homepage
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

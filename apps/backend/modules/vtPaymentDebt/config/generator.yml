@@ -1,0 +1,38 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtPaymentDebt
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_payment_debt
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Báo cáo thanh toán cước
+        display: [order_no,msisdn,order_type,service_type,price,status,staff_code,created_at,utm_source,aff_sid,utm_medium]
+        fields:
+          msisdn: {label: Thuê bao}
+          order_type: {label: Tên hàm}
+          service_type: {label: Loại giao dịch}
+          price: {label: Giá tiền}
+          status: {label: Trạng thái}
+          staff_code: {label: Mã nhân viên tư vấn}
+          created_at: {label: Ngày tạo}
+          utm_source: {label: utm_source}
+          aff_sid: {label: aff_sid}
+          utm_medium: {label: utm_medium}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: vtPaymentDebtAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~

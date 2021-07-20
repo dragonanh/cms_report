@@ -1,0 +1,39 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtCttTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_ctt_transaction_vtPreToPostReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Thống kê giao dịch chuyển đổi sang trả sau
+        display: [order_no,isdn,amount_format,created_at,source,status_name,omni_error_code_name,refund_status, omni_error_code, omni_order_message, transaction_id, ctt_id]
+        fields:
+          isdn: {label: Thuê bao chuyển đổi}
+          created_at: {label: Thời gian tạo giao dịch}
+          amount_format: {label: Charge amount}
+          base_price: {label: Giá gốc}
+          source: {label: Channel}
+          status_name: {label: Trạng thái trừ tiền}
+          omni_error_code_name: {label: Trạng thái chuyển đổi}
+          omni_error_code: {label: Mã lỗi}
+          omni_order_message: {label: Lý do thất bại}
+          tran_id: {label: Transaction Id}
+          ctt_id: {label: Ctt Id}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: VtPreToPostReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,66 @@
+all:
+  connections:
+    default:
+      host: 10.58.52.10
+      port: 9111
+#    rediscache:
+#      host: 10.58.52.10
+#      port: 9111
+##      port: 1079
+#      database: 10
+##      password: Abc@12345
+#      connection_timeout: 5
+#      read_write_timeout: 5
+    redislog:
+      host: 10.58.52.10
+      port: 9111
+#      port: 1079
+      database: 9
+#      password: Abc@12345
+      connection_timeout: 1
+      read_write_timeout: 1
+    change_isdn:
+      host: 10.58.52.9
+      port: 9111
+      database: 0
+      connection_timeout: 5
+      read_write_timeout: 30
+    auction:
+      host: 10.58.52.10
+      port: 9111
+      database: 4
+      connection_timeout: 5
+      read_write_timeout: 30
+    cache_sim:
+      host: 10.58.52.10
+      port: 9111
+      database: 6
+      connection_timeout: 5
+      read_write_timeout: 30
+    order_info:
+      host: 10.58.52.10
+      port: 9111
+      database: 3
+      connection_timeout: 5
+      read_write_timeout: 30
+    rediscache:
+      host: 10.58.52.10
+      port: 9111
+      database: 1
+      connection_timeout: 5
+      read_write_timeout: 30
+#    rediscache: redis://10.58.52.10:9111
+#    rediscache:
+#      - redis://10.58.45.135:7379
+#      - redis://10.58.45.135:7379
+
+
+
+#    checkTPackage:
+#      host: localhost
+##      host: 10.58.45.135
+#      port: 13579
+#      database: 6
+##      password: Abc@12345
+#      connection_timeout: 5
+#      read_write_timeout: 5

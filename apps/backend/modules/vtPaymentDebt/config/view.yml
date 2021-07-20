@@ -1,0 +1,4 @@
+indexSuccess:
+  metas:
+    title: Báo cáo thanh toán cước
+  javascripts: [vtRefundReport.js?v=5]

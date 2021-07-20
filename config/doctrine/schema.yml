@@ -1,0 +1,198 @@
+connection: doctrine
+  #vt_area
+VtArea:
+    tableName: vt_area
+    actAs:
+    columns:
+      code: { type: string(255), comment: "Ma code" }
+      parent_code: { type: string(255), comment: "Ma code cua thang cha" }
+      name: { type: string(255), comment: "Ten" }
+      full_name: { type: string(255), comment: "Ten day du" }
+      status: { type: integer(2), comment: "Trang thai" }
+      province: { type: string(255), comment: "Tinh thanh" }
+      district: { type: string(50), comment: "Quan huyen" }
+      precinct: { type: string(255), comment: "Phuong xa" }
+      street_block: { type: string(50), comment: "To thon" }
+      street: { type: string(50), comment: "Duong" }
+      province_name: { type: integer(20), comment: "Ten tinh thanh" }
+      district_name: { type: integer(20), comment: "Ten qan huyen" }
+      precinct_name: { type: string(255), comment: "Ten to thon" }
+#vt_area
+sfGuardUser:
+  columns:
+    pass_update_at: { type: timestamp }
+    is_lock_signin:  { type: boolean }
+    locked_time: { type: integer }
+VtUserSigninLock:
+  tableName: vt_user_signin_lock
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+    user_name: { type: string(255) }
+    created_time: { type: integer }
+SessionsAdmin:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+    sess_id: {type: string(64), primary: true}
+    sess_data: {type: clob, notnull: true}
+    sess_time: {type: integer(11), notnull: true}
+    sess_userid: {type: integer(20), default: null}
+VtCttTransaction:
+  tableName: vt_ctt_transaction
+  actAs:
+    Timestampable: ~
+  columns:
+    calling: { type: string(50), comment: "So dien thoai thanh toan" }
+    isdn: { type: integer(20), comment: "so dien thoai thu huong" }
+    tran_id: { type: string(255),  comment: "Ma giao dich ben myviettel tu sinh" }
+    amount: { type: integer(11), notnull: true, comment: "So tien can thanh toan" }
+    version: {  type: string(50), comment: "version cua cong thanh toan"}
+    description: { type: string(255), comment: "Noi dung thanh toan"}
+    service_pay: { type: string(255), comment: "(mps: gói vas, vtfree: gói vtfree, topup, omi: nghiệp vụ omi, data: gói data)"}
+    ctt_package: { type: string(255), comment: "tên gói cước (trường hợp mua gói vas, data, vtfree)"}
+    command_code: { type: integer, default: 0, comment: "mã chu kỳ đối với gói vas"}
+    content: { type: clob, comment: "dạng json lưu thông tin đơn hàng với loại mua sim " }
+    omni_order_code: { type: string(255), comment: "mã đơn hàng với các nghiệp vụ omi"}
+    omni_error_code: { type: string(255), comment: "Ma loi khi dat hang"}
+    omni_order_message: { type: string(255), comment: "Ma loi khi dat hang"}
+    ctt_id: { type: string(255), comment: "id giao dịch bên ctt, trả về trong payRessult"}
+    status: { type: integer(2), comment: "trạng thái giao dịch thanh toán -1: thanh toán pending, 0: thanh toán thất bại, 1: thanh toán thành công, 2: hoàn tiền thành công, 3: hoàn tiền thất bại"}
+    ctt_pay_update_time: { type: datetime, comment: "thời gian cập nhật kết quả" }
+    source: { type: string(255), comment: "APP,WEB,WAP"}
+    order_type: { type: integer(2), comment: "loại giao dịch (1: prepaid, 2: postpaid, 21: register vas, 22: register data, 23: register vtfree, 24: topup)"}
+    ctt_package_name: { type: string(255), comment: "Ten goi cuoc dang ky"}
+    sim_number: { type: string(50), comment: "So sim dang ky mua"}
+    base_price: { type: integer(11), comment: "Gia goc"}
+    service_indicator: { type: string(10), comment: "dung de truyen sang ws gach no"}
+    refund_error_code: { type: string(45), comment: "Ma loi hoan tien"}
+    channel: { type: string(255), default: 0, comment: "Kênh dich vụ tích hợp vào thanh toán"}
+    refund_status: { type: integer(2), default: 0, comment: "Trạng thái hoàn tiền"}
+    bank_code: { type: string(50), comment: "Nguon tien"}
+  relations:
+    VtVpgTransaction: { local: tran_id, foreign: tran_id, onDelete: SET NULL}
+
+VtVpgTransaction:
+  tableName: vt_vpg_transaction
+  actAs:
+    Timestampable: ~
+  columns:
+    calling: { type: string(50), comment: "So dien thoai thanh toan" }
+    isdn: { type: integer(20), comment: "so dien thoai thu huong" }
+    tran_id: { type: string(255),  comment: "Ma giao dich ben myviettel tu sinh" }
+    amount: { type: integer(11), notnull: true, comment: "So tien can thanh toan" }
+    ctt_id: { type: string(255), comment: "id giao dịch bên ctt, trả về trong payRessult"}
+    status: { type: integer(2), comment: "0: gạch nợ thất bại, 1: gạch nợ thành công"}
+    error_code: { type: string(45), comment: "00: là thành công,33: timeOut,23: số điện thoại lỗi, Còn lại là lỗi không thể thanh toán trên VPG "}
+    error_message: { type: string(255), comment: "Mo ta loi"}
+    is_refund: { type: integer(2), default: 0, comment: "0 chưa hoàn tiền, 1 đã hoàn tiền (mặc định = 0)"}
+    retry: { type: integer(2), default: 0, comment: "Số lần retry giao dịch"}
+    channel: { type: string(255), default: 0, comment: "Kênh dich vụ tích hợp vào thanh toán APP,WEB,WAP"}
+    isdn_login: { type: string(15), comment: "SDT dang nhap myviettel"}
+    order_time: { type: datetime, comment: "thoi gian dat hang tren myviettel"}
+    service_indicator: { type: string(10), comment: "dung de truyen sang ws gach no"}
+
+VtOmniOrderHis:
+  tableName: vt_omni_order_his
+  actAs:
+    Timestampable: ~
+  columns:
+    order_code: { type: string(50), comment: "Ma don hang" }
+    msisdn: { type: integer(20), comment: "So dien thoai" }
+    error_code: { type: integer(11), comment: "(0: thanh cong, 1: that bai)" }
+    response: { type: clob, comment: "response tra ve tu ws khi dat hang" }
+    order_content: { type: clob, comment: "thong tin don hang" }
+    source: {  type: string(20), comment: "APP,WEB,WAP"}
+    order_type: { type: string(255), comment: "Loại đơn hàng: 1- Đấu nối sim trả trước, 2- trả sau,.."}
+
+VtCttRefundLog:
+  tableName: vt_ctt_refund_log
+  actAs:
+    Timestampable: ~
+  columns:
+    tran_id: { type: string(255), comment: "Ma don hang" }
+    refund_amount: { type: integer(20), comment: "So tien hoan" }
+    refund_type: { type: integer(2), comment: "(0: hoan toan phan, 1: hoan 1 phan)" }
+    reason: { type: clob, comment: "ly do hoan tien" }
+    username: { type: string(255), comment: "usser hoan tien" }
+    ip: {  type: string(50), comment: "ip thuc hien hoan tien"}
+    file_path: {  type: string(255), comment: "dương dan file bb xac nhan hoan tien"}
+    status: {  type: int, comment: "Trang thai gui hoan tien"}
+    message: {  type: clob, comment: "Mo ta loi"}
+PartnerTransaction:
+  tableName: partner_transaction
+  actAs:
+    Timestampable: ~
+  columns:
+    transaction_id: { type: string(255), comment: "Mã giao dịch do viettel tự sinh" }
+    description: { type: string(255), comment: "Mô tả giao dịch" }
+    myviettel_account: { type: string(50), comment: "Số điện thoại lấy dựa theo trường sub_id" }
+    msisdn: { type: string(50), comment: "số điện thoại thực hiện thanh toán bằng điểm viettel++" }
+    status: { type: int(2), comment: "Trạng thái giao dịch 1: trừ điểm hoặc trừ tiền thành công" }
+    merchant_code: {  type: string(50), comment: "Mã đối tác"}
+    order_code: {  type: string(255), comment: "Mã đơn hàng của đối tác"}
+    amount: {  type: int(11), comment: "Tổng tiền phải thanh toán"}
+    base_price: {  type: int(11), comment: "Số tiền đơn hàng của đối tác"}
+    pay_code: {  type: string(50), comment: "Mã hình thức thanh toán"}
+    vt_transaction_id: {  type: string(255), comment: "transaction_id khi đối tác vào từ webview tích hợp trên myviettel"}
+    sub_id: {  type: string(255), comment: "sub_id khi đối tác vào từ webview tích hợp trên myviettel"}
+    url_redirect: {  type: clob, comment: "Lưu thông tin url redirect"}
+    request_id: {  type: string(255), comment: "Mã giao dịch của cổng thanh toán trả về"}
+    refund_status: {  type: int(2), comment: "Trạng thái hoàn tiền( 1: chờ xác nhận hoàn tiền, 2: hoàn tiền thành công, 3: hoàn tiền thất bại)"}
+    refund_reason: {  type: clob, comment: "Lý do hoàn tiền"}
+    refund_time: {  type: datetime, comment: "Thời gian hoàn tiền"}
+    refund_amount: {  type: int(11), comment: "Số tiền hoàn"}
+    ip: {  type: string(50), comment: "Địa chỉ ip gọi vào"}
+    status_call_api: {  type: string(2), comment: "00: thành công, còn lại là thất bại"}
+    payment_source: {  type: string(255), comment: "Nguồn tiền thanh toán"}
+    viettelid_point: {  type: string(255), comment: ""}
+    status_viettel_id: { type: int(2), comment: "Trạng thái trừ điểm" }
+    refund_viettel_id: { type: int(2), comment: "Trạng thái giao dịch 1: Trạng thái hoàn điểm" }
+PartnerRefundLog:
+  tableName: partner_refund_log
+  actAs:
+    Timestampable: ~
+  columns:
+    tran_id: { type: string(255), comment: "Ma don hang" }
+    refund_amount: { type: integer(20), comment: "So tien hoan" }
+    refund_type: { type: integer(2), comment: "(0: hoan toan phan, 1: hoan 1 phan)" }
+    reason: { type: clob, comment: "ly do hoan tien" }
+    username: { type: string(255), comment: "usser hoan tien" }
+    ip: {  type: string(50), comment: "ip thuc hien hoan tien"}
+    file_path: {  type: string(255), comment: "dương dan file bb xac nhan hoan tien"}
+    viettelid_point: {  type: string(100), comment: "diem viettel ++"}
+    pay_code: {  type: string(50), comment: "Hinh thuc thanh toan"}
+MerchantOrder:
+  tableName: merchant_order
+  actAs:
+    Timestampable: ~
+  columns:
+    transaction_id: { type: string(255), comment: "Ma don hang" }
+    sub_id: { type: string(255), comment: "Ma dinh danh khach hang" }
+    merchant_code: { type: string(50), comment: "Ma doi tac" }
+    myvt_account: { type: string(50), comment: "tai khoan dang nhap myviettel" }
+    order_time: { type: datetime, comment: "thoi gian dat hang" }
+    status: {  type: string(50), comment: "trang thai don hang"}
+    payment_status: {  type: string(50), comment: "trang thai thanh toan"}
+    order_code: {  type: string(255), comment: "Ma don hang"}
+    customer_name: {  type: string(50), comment: "Ten Khach hang"}
+    customer_phone: {  type: string(50), comment: "SDT khach hang"}
+    base_price: {  type: integer(20), comment: "Gia goc"}
+    price: {  type: integer(20), comment: "Gia thuc te thanh toan"}
+    product_name: {  type: string(255), comment: "Ten san pham"}
+    quantity: {  type: string(50), comment: "so luong"}
+    product_price: {  type: string(255), comment: "Gia san pham"}
+    category: {  type: string(255), comment: "Hinh thuc thanh toan"}
+    discount: {  type: string(50), comment: "Hinh thuc thanh toan"}
+    discount_price: {  type:  integer(20), comment: "Hinh thuc thanh toan"}
+    is_done: {  type: integer(4), comment: "Hinh thuc thanh toan"}
+    processed: {  type: integer(4), comment: "Hinh thuc thanh toan"}
+    trans_type_id: {  type: string(50), comment: "Hinh thuc thanh toan"}
+    hold_fee: {  type: string(50), comment: "Hinh thuc thanh toan"}
+    pay_gate_fee: {  type: string(50), comment: "Hinh thuc thanh toan"}
+    discount_real: {  type: string(50), comment: "Hinh thuc thanh toan"}
+    content: {  type: clob, comment: "Hinh thuc thanh toan"}

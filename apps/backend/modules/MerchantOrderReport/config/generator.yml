@@ -1,0 +1,42 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           MerchantOrder
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          merchant_order
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Thống kê giao dịch đối tác
+        display: [order_no,transaction_id,merchant_code,myvt_account,order_time,status,payment_status,order_code,price,product_name,discount_price,customer_name,updated_at]
+        fields:
+          transaction_id: {label: Mã giao dịch}
+          merchant_code: {label: Mã đối tác}
+          myvt_account: {label: Tài khoản MyViettel}
+          order_time: {label: Thời gian đặt hàng}
+          status: {label: Trạng thái}
+          payment_status: {label: Trạng thái thanh toán}
+          order_code: {label: Mã đơn hàng}
+          product_name: {label: Tên sản phẩm}
+          price: {label: Giá}
+          discount_price: {label: Chiết khẩu MyViettel được nhận}
+          customer_name: {label: Tên KH}
+          updated_at: {label: Thời gian cập nhật}
+        object_actions: {}
+        actions: {}
+        batch_actions: {}
+      filter:
+        class: MerchantOrderAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="all" class="ViettelLoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date{Y-m-d H:i:s,u}|%pid|%message%newline"/>
+        </layout>
+        <param name="file" value="all/all-%s.log"/>
+        <param name="datePattern" value="Y-m-d"/>
+    </appender>
+    
+    <logger name="all">
+        <!--<level value="info" />-->
+        <appender_ref ref="all"/>
+    </logger>
+</configuration>
+
+

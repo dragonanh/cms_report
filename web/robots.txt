@@ -1,0 +1,11 @@
+User-agent: * 
+#Allow: /
+Disallow: /thanh-toan-sim*
+Disallow: /lien-ket-khong-ton-tai*
+Disallow: /dat-sim*
+Disallow: /hoan-thanh-thanh-toan-sim/*
+Disallow: /user-info
+Disallow: /order-history
+
+
+

@@ -1,0 +1,36 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtOmniOrderHis
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_omni_order_his
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Omni Standard Report
+        display: [order_no,msisdn,order_code,created_at,order_type,status,source_name]
+        fields:
+          status: {label: Trạng thái}
+          created_at: {label: Thời gian gửi mã order}
+          msisdn: {label: Số TB thực hiện chuẩn hóa}
+          order_type: {label: Hình thức chuẩn hóa}
+          source_name: {label: Kênh}
+          order_code: {label: Mã Order}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: vtStandardAIReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

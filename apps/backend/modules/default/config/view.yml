@@ -1,0 +1,10 @@
+error404Success:
+  metas:
+    title:        ERROR PAGE
+  stylesheets:
+#    - -*
+#    - mystyles1: { position: last }
+#    - mystyles2: {position: last}
+#    - /sf/sf_default/css/screen.css
+#    - /sf/sf_default/css/ie.css
+#    - errors: {position: last}

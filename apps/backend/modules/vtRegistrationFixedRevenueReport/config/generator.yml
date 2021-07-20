@@ -1,0 +1,41 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtCttTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_ctt_transaction_vtRegistrationFixedRevenueReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Registration Fixed Revenue Report
+        display: [order_no,isdn,service_type,ctt_package_name,prepaid_code,omni_process_id,created_at,tran_id,ctt_id,charge_time,policy,total_fee]
+        fields:
+          isdn: {label: SĐT đăng ký/acc đăng ký dịch vụ}
+          service_type: {label: Loại dịch vụ}
+          ctt_package_name: {label: Gói cước}
+          prepaid_code: {label: Mã cước đóng trước}
+          omni_process_id: {label: Mã đơn hàng}
+          total_fee: {label: Tổng tiền phải thanh toán}
+          policy: {label: Chính sách đóng trước}
+          created_at: {label: Thời gian đăng ký}
+          charge_time: {label: Thời gian charge tiền}
+          tran_id: {label: Mã thanh toán (Mã sinh ra từ MyVT)}
+          ctt_id: {label: Mã giao dịch (Mã sinh ra từ Cổng thanh toán)}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: vtRegistrationFixedRevenueReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

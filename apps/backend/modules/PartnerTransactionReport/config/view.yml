@@ -1,0 +1,4 @@
+indexSuccess:
+  metas:
+    title: Báo cáo hoàn tiền giao dịch merchant
+  javascripts: [vtRefundReport.js]

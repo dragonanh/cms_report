@@ -1,0 +1,68 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           sfGuardUser
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sf_guard_user
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        title: Danh sách người dùng
+        display: [=username, email_address,is_active,is_super_admin,last_login,created_at,updated_at]
+        fields:
+          id:
+            label: ID
+          username:
+            label: Tên đăng nhập
+          password:
+            label: Mật khẩu
+          is_active:
+            label: Kích hoạt
+          is_super_admin:
+            label: Siêu quản trị
+          groups_list:
+            label: Danh sách nhóm
+          permissions_list:
+            label: Danh sách quyền
+          email_address:
+            label: Địa chỉ Email
+          created_at:
+            label: Ngày tạo
+          updated_at:
+            label: Cập nhật
+          last_login:
+            label: Đăng nhập lần cuối
+        batch_actions:
+          _delete:    ~
+#          active:     ~
+#          deactive: ~
+        object_actions:
+          _edit: ~
+          _delete: ~
+        sort: [created_at, desc]
+      filter:
+        display: [username, is_active]
+        fields:
+          is_active: {label: Kích hoạt}
+          username: {label: Tên đăng nhập}
+      form:
+        class: sfGuardUserAdminForm
+        display: [id, email_address, username, password,password_again, is_super_admin, is_active, permissions_list]
+      edit:
+        title: Chỉnh sửa người dùng
+        display: [id, email_address, username_show, password,password_again, is_super_admin, is_active, permissions_list]
+        fields:
+          username_show:
+            label: Tên đăng nhập
+      new:
+        title: Thêm mới người dùng
+      show:    ~
+      revert:  ~

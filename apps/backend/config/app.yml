@@ -1,0 +1,70 @@
+all:
+  # Change these if you'd like to move/modify CSS & JS files
+  tmcTwitterBootstrapPlugin:
+    bootstrap_path:              /tmcTwitterBootstrapPlugin/css/bootstrap.min.css
+    responsive_bootstrap_path:   /tmcTwitterBootstrapPlugin/css/bootstrap-responsive.min.css
+    admin_styles_path:           /tmcTwitterBootstrapPlugin/css/styles.css
+    jquery_path:                 /tmcTwitterBootstrapPlugin/js/jquery.min.js
+    bootstrap_js_path:           /tmcTwitterBootstrapPlugin/js/bootstrap.min.js
+    admin_js_path:               /tmcTwitterBootstrapPlugin/js/global.js
+    header:
+      menu:
+        Quản Trị:
+          credentials: [[admin,qtv_cskh]]
+          dropdown:
+            Người dùng:
+              route: sf_guard_user
+        Báo cáo:
+          credentials: [[admin,report]]
+          dropdown:
+            Thống kê giao dịch CTT/VTPAY:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtCttReport
+            Thống kê giao dịch chuyển đổi sang trả sau:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtPreToPostReport
+            Thống kê giao dịch cước đóng trước:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtCdtReport
+            Thống kê giao dịch mnp:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtMnpReport
+            Thống kê giao dịch topup:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtTopupReport
+            Báo cáo doanh thu topup:
+              credentials: [[admin, report]]
+              route: vt_vpg_transaction_vtTopupRevenueReport
+            Thống kê giao dịch mua sim:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction
+            Báo cáo doanh thu mua sim:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtOmniRevenueReport
+            Thống kê giao dịch mua gói data,vas:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtPackageReport
+            Báo cáo doanh thu mua gói data,vas:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtPackageRevenueReport
+            Thống kê giao dịch thực hiện chuẩn hóa:
+              credentials: [[admin, report]]
+              route: vt_omni_order_his
+            Báo cáo giao dịch đăng ký cố định:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtRegistrationFixedReport
+            Báo cáo doanh thu đăng ký dịch vụ cố định:
+              credentials: [[admin, report]]
+              route: vt_ctt_transaction_vtRegistrationFixedRevenueReport
+            Báo cáo giao dịch hoàn tiền:
+              credentials: [[admin]]
+              route: vt_ctt_transaction_vtRefundReport
+            Báo cáo đơn hàng đối tác:
+              credentials: [[admin, report]]
+              route: merchant_order
+            Đồng bộ địa bàn:
+              credentials: [ [ admin, report ] ]
+              route: vt_area_VtAreaImport
+            Báo cáo giao dịch hoàn tiền Merchant:
+              credentials: [[admin]]
+              route: partner_transaction_PartnerTransactionReport

@@ -1,0 +1,279 @@
+vt_area_VtAreaImport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtArea
+    module:               vtarea
+    prefix_path:          /VtAreaImport
+    column:               id
+    with_wildcard_routes: true
+merchant_order:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                MerchantOrder
+    module:               MerchantOrderReport
+    prefix_path:          /MerchantOrderReport
+    column:               id
+    with_wildcard_routes: true
+vt_payment_debt:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtPaymentDebt
+    module:               vtPaymentDebt
+    prefix_path:          /businessReport
+    column:               id
+    with_wildcard_routes: true
+pay_card_payCard:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                payCard
+    module:               PayCard
+    prefix_path:          /payCard
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtCttReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtCttReport
+    prefix_path:          /vtCttReport
+    column:               id
+    with_wildcard_routes: true
+partner_transaction_PartnerTransactionReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                PartnerTransaction
+    module:               PartnerTransactionReport
+    prefix_path:          /PartnerTransactionReport
+    column:               id
+    with_wildcard_routes: true
+vt_ctt_transaction_vtRefundReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtRefundReport
+    prefix_path:          /vtRefundReport
+    column:               id
+    with_wildcard_routes: true
+vt_ctt_transaction_vtRegistrationFixedRevenueReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtRegistrationFixedRevenueReport
+    prefix_path:          /vtRegistrationFixedRevenueReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtRegistrationFixedReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtRegistrationFixedReport
+    prefix_path:          /vtRegistrationFixedReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtPreToPostReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtPreToPostReport
+    prefix_path:          /vtPreToPostReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtCdtReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtCdtReport
+    prefix_path:          /vtCdtReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtMnpReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtMnpReport
+    prefix_path:          /vtMnpReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtPackageRevenueReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtPackageRevenueReport
+    prefix_path:          /vtPackageRevenueReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtPackageReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtPackageReport
+    prefix_path:          /vtPackageReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_vpg_transaction_vtTopupRevenueReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtVpgTransaction
+    module:               vtTopupRevenueReport
+    prefix_path:          /vtTopupRevenueReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtOmniRevenueReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtOmniRevenueReport
+    prefix_path:          /vtOmniRevenueReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtOmniReport
+    prefix_path:          /vtOmniReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_ctt_transaction_vtTopupReport:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtCttTransaction
+    module:               vtTopupReport
+    prefix_path:          /vtTopupReport
+    column:               id
+    with_wildcard_routes: true
+
+vt_omni_order_his:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                VtOmniOrderHis
+    module:               vtStandardAIReport
+    prefix_path:          /vtStandardAIReport
+    column:               id
+    with_wildcard_routes: true
+
+homepage:
+  url:   /
+  param: { module: vtHomePage, action: index }
+# system rules
+sf_guard_change_password:
+  url:   /guard/change_password
+  param: { module: sfGuardAuth, action: changePassword }
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+#routing import sf guard user
+sf_guard_import_excel:
+  url: /vtManageBackendUser/excel
+  param: {module: vtManageBackendUser, action: importExcel}
+sf_guard_download_fail_file:
+  url:   /vtManageBackendUser/download-fail/:file_name
+  param: { module: vtManageBackendUser, action: downloadFileImportFail}
+sf_guard_download_sample:
+  url:   /vtManageBackendUser/download-sample
+  param: { module: vtManageBackendUser, action: downloadFileSample}
+
+sf_guard_cancel_import_excel:
+  url: /vtManageBackendUser/excel-cancel
+  param: {module: vtManageBackendUser, action: importExcelCancel}
+sf_guard_download_cancel_fail_file:
+  url:   /vtManageBackendUser/download-cancel-fail/:file_name
+  param: { module: vtManageBackendUser, action: downloadFileCancelImportFail}
+sf_guard_download_cancel_sample:
+  url:   /vtManageBackendUser/download-cancel-sample
+  param: { module: vtManageBackendUser, action: downloadFileSampleCancel}
+#end routing import sf guard user
+vt_refund_report_import_excel:
+  url: /vtRefundReport/excel
+  param: {module: vtRefundReport, action: importExcel}
+vt_refund_report_refund_per_id:
+  url:   /ajax/hoan-tien
+  param: { module: vtRefundReport, action: refundPerId }
+vt_refund_report_download_fail_file:
+  url:   /vtRefundReport/download-fail/:file_name
+  param: { module: vtRefundReport, action: downloadFileImportFail}
+vt_refund_report_download_sample:
+  url:   /vtRefundReport/download-sample
+  param: { module: vtRefundReport, action: downloadFileSample}
+
+partner_transaction_report_import_money_excel:
+  url: /PartnerTransactionReport/excel-money
+  param: {module: PartnerTransactionReport, action: importMoneyExcel}
+partner_transaction_report_import_point_excel:
+  url: /PartnerTransactionReport/excel-point
+  param: {module: PartnerTransactionReport, action: ImportPointExcel}
+partner_transaction_report_refund_money_per_id:
+  url:   /ajax/hoan-tien-merchant
+  param: { module: PartnerTransactionReport, action: refundMoneyPerId }
+partner_transaction_report_refund_point_per_id:
+  url:   /ajax/hoan-diem-merchant
+  param: { module: PartnerTransactionReport, action: refundPointPerId }
+partner_transaction_report_cancel_refund:
+  url:   /ajax/huy-yeu-cau-hoan-tien-merchant
+  param: { module: PartnerTransactionReport, action: cancelRefund }
+partner_transaction_report_download_fail_file:
+  url:   /PartnerTransactionReport/download-fail/:file_name
+  param: { module: PartnerTransactionReport, action: downloadFileImportFail}
+partner_transaction_view_detail_transaction:
+  url:   /PartnerTransactionReport/view-detail
+  param: { module: PartnerTransactionReport, action: viewDetailTransaction}
+vt_vt_area_import_excel:
+  url: /VtAreaImport/excel
+  param: {module: vtarea, action: importExcel}
+vt_vt_area_download_template:
+  url: /VtAreaImport/dowload
+  param: {module: vtarea, action: downloadFileSample}
+vt_vt_area_crontab:
+  url: /vtArea/crontab
+  param: {module:vtarea, action: crontab}
+vt_vt_area_confirm_import_excel:
+  url: /vtArea/confirmImportExcel
+  param: {module:vtarea, action: confirmImportExcel}
+#sf_user_info:
+#  url: /sf_guard_user
+#  params: { module: vtManageUserInfo, action: edit}
+#------------------------------------------------------------------------------#
+# management for supper admin
+# manage backend user
+sf_guard_user:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                sfGuardUser
+    module:               vtManageBackendUser
+    prefix_path:          /vtManageBackendUser
+    column:               id
+    with_wildcard_routes: true
+sf_guard_permission:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                sfGuardPermission
+    module:               vtManagePermission
+    prefix_path:          /vtManagePermission
+    column:               id
+    with_wildcard_routes: true
+sf_guard_group:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                sfGuardGroup
+    module:               vtManageGroup
+    prefix_path:          /vtManageGroup
+    column:               id
+    with_wildcard_routes: true

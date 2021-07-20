@@ -1,0 +1,19 @@
+.controls .span2:first-child {
+    margin: 4px 10px 0 0; width: auto
+}
+
+.controls .span2:last-child {
+    margin: 0 10px 0 0; width: auto
+}
+
+.control-group .span2:last-child {
+    margin-left: 0; width: auto
+}
+.controls {
+    /*float: left;*/
+    overflow: hidden;
+}
+.span11 .controls {
+    float: left;
+    overflow: hidden;
+}

@@ -1,0 +1,40 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtCttTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_ctt_transaction_vtRefundReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Báo cáo hoàn tiền
+        display: [order_no, tran_id, ctt_id,isdn, amount_format,order_type_name,status_name,omni_error_code_name,updated_at, refund_status_name,channel_name]
+        fields:
+          tran_id: {label: Transaction Id}
+          ctt_id: {label: Ctt Id}
+          isdn: {label: Thuê bao được cung cấp dịch vụ}
+          amount_format: {label: Số tiền thanh toán}
+          order_type_name: {label: Loại giao dịch}
+          status_name: {label: Trạng thái trừ tiền}
+          omni_error_code_name: {label: Trạng thái cung cấp dịch vụ}
+          refund_status_name: {label: Trạng thái hoàn tiền}
+          channel_name: {label: Nguồn tiền}
+          updated_at: {label: Thời gian giao dịch}
+        object_actions:
+          _refund: ~
+          _show: ~
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: VtRefundReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~

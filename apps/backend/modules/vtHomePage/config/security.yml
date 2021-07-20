@@ -1,0 +1,10 @@
+# just one action
+
+#all:
+#  is_ssl: true
+
+registerXs:
+  is_secure: false
+#login:
+#  is_ssl: true
+#

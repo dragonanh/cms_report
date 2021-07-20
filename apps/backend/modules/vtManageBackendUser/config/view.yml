@@ -1,0 +1,11 @@
+indexSuccess:
+  metas:
+    title: Danh sách người dùng
+
+newSuccess:
+  metas:
+    title: Thêm mới người dùng
+
+editSuccess:
+  metas:
+    title: Chỉnh sửa người dùng

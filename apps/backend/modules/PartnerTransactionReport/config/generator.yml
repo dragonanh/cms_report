@@ -1,0 +1,41 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           PartnerTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          partner_transaction_PartnerTransactionReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Báo cáo hoàn tiền giao dịch merchant
+        display: [order_no, transaction_id, msisdn, amount, viettelid_point, description, pay_code, status, status_viettel_id, refund_status, refund_viettel_id]
+        fields:
+          transaction_id: {label: Mã giao dịch}
+          msisdn: {label: Thuê bao}
+          amount: {label: Số tiền thanh toán}
+          viettelid_point: {label: Số điểm thanh toán}
+          description: {label: Mô tả}
+          pay_code: {label: Loại giao dịch}
+          status: {label: Trạng thái giao dịch}
+          refund_viettel_id: {label: Trạng thái hoàn điểm}
+          status_viettel_id: {label: Trạng thái trừ điểm}
+        object_actions:
+          _refund: ~
+          _show: ~
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: PartnerTransactionReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+      revert:  ~

@@ -1,0 +1,37 @@
+generator:
+  class: tmcTwitterBootstrapDoctrineGenerator
+  param:
+    model_class:           VtCttTransaction
+    theme:                 tmcTwitterBootstrap
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vt_ctt_transaction_vtCdtReport
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Thống kê giao dịch cước đóng trước
+        display: [order_no,isdn_login,isdn,amount_format, base_price,created_at,source,status_name,omni_error_code_name,refund_status, transaction_id, ctt_id]
+        fields:
+          isdn: {label: Isdn charged}
+          created_at: {label: Thời gian tạo giao dịch}
+          amount_format: {label: Charge amount}
+          base_price: {label: Giá gốc}
+          source: {label: Channel}
+          status_name: {label: Trạng thái trừ tiền}
+          omni_error_code_name: {label: Trạng thái gạch nợ/nạp tiền}
+          tran_id: {label: Transaction Id}
+          ctt_id: {label: Ctt Id}
+        object_actions: {}
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: VtCdtReportAdminFormFilter
+      form:    ~
+      edit:    ~
+      new:     ~
